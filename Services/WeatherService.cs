@@ -18,7 +18,7 @@
 
         public async Task<string> GetWeatherAsync(string city)
         {
-            var url = $"https://api.openweathermap.org/data/4.0/onecall/current?lat={{lat}}&lon={{lon}}&appid={{API key}}";
+            var url = $"https://api.openweathermap.org/data/2.5/weather?lat={{lat}}&lon={{lon}}&appid={{API key}}";
             
             var response = await _httpClient.GetAsync(url); //Send an HTTP GET request to our URL
 
