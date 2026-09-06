@@ -24,7 +24,9 @@
 
             response.EnsureSuccessStatusCode();
 
-            return url;
+            var json = await response.Content.ReadAsStringAsync();
+
+            return json;
 
         }
     }
