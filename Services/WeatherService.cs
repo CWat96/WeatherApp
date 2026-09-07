@@ -22,7 +22,7 @@ namespace WeatherApp.Services
 
         public async Task<WeatherResponse?> GetWeatherAsync(string city)
         {
-            var url = $"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={_apiKey}";
+            var url = $"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={_apiKey}&units=imperial";
 
             var response = await _httpClient.GetAsync(url); //Send an HTTP GET request to our URL
 
