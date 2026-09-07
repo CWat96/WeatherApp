@@ -1,11 +1,20 @@
 ﻿@page "/weather"
 @using WeatherApp.Services
+@using WeatherApp.Models
 @inject WeatherService WeatherService
 
 <h1>Weather</h1>
+<input @bind="city" placeholder="Enter city" />
 
-<p>This is my weather page..</p>
+<button @onclick="GetWeather">Search</button>
+
 
 @code {
+    private string city = string.Empty;
+    private WeatherResponse? weather; 
 
+    private async Task GetWeather()
+    {
+        weather = await WeatherService.GetWeatherAsync(city);
+    }
 }
