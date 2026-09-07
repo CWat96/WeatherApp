@@ -1,12 +1,23 @@
 ﻿@page "/weather"
+@rendermode InteractiveServer
 @using WeatherApp.Services
 @using WeatherApp.Models
 @inject WeatherService WeatherService
+
 
 <h1>Weather</h1>
 <input @bind="city" placeholder="Enter city" />
 
 <button @onclick="GetWeather">Search</button>
+
+@if (weather != null)
+{
+    <h2>@weather.Name</h2>
+
+    <p>Temperature: @weather.Main?.Temp</p>
+    <p>Humidity: @weather.Main?.Humidity%</p>
+    <p>Conditions: @weather.Weather?[0].Description</p>    
+}
 
 
 @code {

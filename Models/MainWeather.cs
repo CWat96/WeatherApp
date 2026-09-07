@@ -4,6 +4,5 @@
     {
         public double Temp {  get; set; }
         public int Humidity { get; set; }
-        public decimal FeelsLike { get; set; }
     }
 }

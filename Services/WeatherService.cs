@@ -22,11 +22,17 @@ namespace WeatherApp.Services
 
         public async Task<WeatherResponse?> GetWeatherAsync(string city)
         {
-            var url = $"https://api.openweathermap.org/data/2.5/weather?lat={{lat}}&lon={{lon}}&appid={{API key}}";
-            
+            var url = $"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={_apiKey}";
+
             var response = await _httpClient.GetAsync(url); //Send an HTTP GET request to our URL
 
-            response.EnsureSuccessStatusCode();
+            //response.EnsureSuccessStatusCode();
+            // EnsureSuccessStatusCode(); stopped method from completing whenever OpenWeatherMap returned an error status
+
+            var errorBody = await response.Content.ReadAsStringAsync();
+
+            Console.WriteLine(response.StatusCode);
+            Console.WriteLine(errorBody);
 
             var json = await response.Content.ReadAsStringAsync();
 
@@ -40,4 +46,6 @@ namespace WeatherApp.Services
 
         }
     }
+
+
 }
