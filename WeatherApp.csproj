@@ -4,9 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId> "OpenWeatherMap": {
-    "ApiKey":3bea69c0-cd81-4d69-a46a-72131d743f7f
-    }</UserSecretsId>
+    <UserSecretsId>1e607dad-965e-4971-bf02-70edef71eebe</UserSecretsId>
   </PropertyGroup>
 
 </Project>

@@ -1,4 +1,8 @@
-﻿namespace WeatherApp.Services
+﻿using System.Text.Json;
+using WeatherApp.Models;
+    
+
+namespace WeatherApp.Services
 {
     public class WeatherService //How to get weather
     {
@@ -16,7 +20,7 @@
             _baseUrl = _configuration["OpenWeatherMap:BaseUrl"];
         }
 
-        public async Task<string> GetWeatherAsync(string city)
+        public async Task<WeatherResponse?> GetWeatherAsync(string city)
         {
             var url = $"https://api.openweathermap.org/data/2.5/weather?lat={{lat}}&lon={{lon}}&appid={{API key}}";
             
@@ -26,7 +30,13 @@
 
             var json = await response.Content.ReadAsStringAsync();
 
-            return json;
+            var weather = JsonSerializer.Deserialize<WeatherResponse>(
+                json,
+                new JsonSerializerOptions
+                {PropertyNameCaseInsensitive = true
+                });
+
+            return weather;
 
         }
     }
